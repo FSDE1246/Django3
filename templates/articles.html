@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Articles{% endblock page_title %}
+{% block body %}
+
+    <h2>Articles</h2>
+
+    {% if articles %}
+        <ul>
+            {% for article in articles %}
+                <li>{{ article.author }}</li>
+                <!-- a href="article-detail/id" -->
+                <li><a href="{% url 'article-detail' article.id %}">{{ article.title }}</a></li>
+                <li>{{ article.content }}</li>
+                <li>{{ article.created_date }}</li>
+                <br> <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color:red;">Heleki hec bir meqale elave olunmayib.</p>
+    {% endif %}
+
+{% endblock body %}

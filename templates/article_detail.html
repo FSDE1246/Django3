@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h2>Article:</h2>
+<ul>
+    <li>{{ article.author }}</li>
+    <li>{{ article.title }}</li>
+    <li>{{ article.content }}</li>
+    <li>{{ article.created_date }}</li>
+</ul>
+
+{% endblock body %}

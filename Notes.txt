@@ -1,0 +1,2 @@
+id -> article/1
+slug -> article/FranzKafka
