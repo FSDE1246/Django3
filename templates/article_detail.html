@@ -9,6 +9,9 @@
     <li>{{ article.title }}</li>
     <li>{{ article.content }}</li>
     <li>{{ article.created_date }}</li>
+    <li>
+        <img style="width: 200px; height:200px" src="{{article.image.url}}" alt="">
+    </li>
 </ul>
 
 {% endblock body %}

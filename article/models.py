@@ -8,7 +8,7 @@ class Article(models.Model):
     title = models.CharField(max_length=150, verbose_name="Başlıq")  # input
     content = models.TextField(verbose_name="Məzmun")  # textarea
     created_date = models.DateTimeField(auto_now_add=True)
-    # image = models.FileField(upload_to="Article Images",blank=True, null=True,verbose_name="Şəkil")
+    image = models.FileField(upload_to="Article Images",blank=True, null=True,verbose_name="Şəkil")
 
     def __str__(self):
         return f"{self.title} | {self.author}"
