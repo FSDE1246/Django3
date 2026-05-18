@@ -24,9 +24,11 @@ from article import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.home__view),
+    path("", views.home__view, name="home"),
     path("articles/", views.articles__view, name="articles"),
-    path("article-detail/<int:id>", views.article__detail__view, name="article-detail")
+    path("add-article/", views.add__article__view, name="add-article"),
+    path("article-detail/<int:id>", views.article__detail__view, name="article-detail"),
+
 ]
 
 if settings.DEBUG:

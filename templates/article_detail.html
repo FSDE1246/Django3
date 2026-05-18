@@ -3,14 +3,28 @@
 
 {% block body %}
 
+<h1>Category: {{ article.category.name }}</h1>
 <h2>Article:</h2>
 <ul>
     <li>{{ article.author }}</li>
     <li>{{ article.title }}</li>
     <li>{{ article.content }}</li>
     <li>{{ article.created_date }}</li>
-    <li>
+    <!-- <li>
         <img style="width: 200px; height:200px" src="{{article.image.url}}" alt="">
+    </li> -->
+    <li>
+        <ul>
+            <h3 style="color: black; font-weight: 800;">Comments: </h3>
+            {% for comment in article.comments.all %}
+            <li>{{ comment.author }}</li>
+            <li>{{ comment.content }}</li>
+            <li>{{ comment.created_date }}</li>
+
+            <hr>
+            <br>
+            {% endfor %}
+        </ul>
     </li>
 </ul>
 

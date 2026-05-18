@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
+from .forms import ArticleForm
 
 # Create your views here.
 
@@ -16,5 +17,29 @@ def articles__view(request):
 
 # domain/article/1
 def article__detail__view(request, id):
+    # comment = Comment.objects.
+    # article = Article.objects.get(id=id)
     article = Article.objects.get(id=id)
-    return render(request, "article_detail.html", {"article": article})
+    comments = article.comments.all()
+    category = article.category
+
+    context = {"article": article, "comments": comments, "category": category}
+    return render(request, "article_detail.html", context)
+
+
+def add__article__view(request):
+    if not request.user.is_authenticated:
+        return redirect("home")
+
+    if request.method == "POST":
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
+            return redirect("articles")
+
+    else:
+        form = ArticleForm()
+
+    return render(request, "article_form.html", {"form":form})
